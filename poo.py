@@ -125,6 +125,7 @@ class Livro:
         self.disponivel = True
 
 
+
 class Biblioteca:
     def __init__(self):
         self.livros = []  # Lista para armazenar os livros na biblioteca
@@ -143,3 +144,34 @@ class Biblioteca:
         for livro in self.livros:
             status = "Disponível" if livro.disponivel else "Indisponível"
             print(f"Livro:")
+            opcao = input("LIVROS VARIAVEIS(1-6): ")
+
+        if opcao == "1":
+            biblioteca.listar_livros()
+        
+        elif opcao == "2":
+            titulo = input(" o título do livro a ser buscado: ")
+            biblioteca.buscar_livro(titulo)
+        
+        elif opcao == "3":
+            titulo = input(" o título do livro a ser emprestado: ")
+            biblioteca.emprestar_livro(titulo)
+        
+        elif opcao == "4":
+            titulo = input("o título do livro a ser devolvido: ")
+            biblioteca.devolver_livro(titulo)
+        
+        elif opcao == "5":
+            titulo = input("Se nao fosse voce: ")
+            autor = input(" Collen Hoover: ")
+            ano = input("2019: ")
+            livro = Livro(titulo, autor, int(ano))
+            biblioteca.adicionar_livro(livro)
+        
+        elif opcao == "6":
+            print("Saindo do sistema. Até logo!")
+            
+        
+        else:
+            print("Opção inválida. Tente novamente.")
+

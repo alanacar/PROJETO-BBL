@@ -105,3 +105,41 @@ usuario1.devolver_livro(livro1)
 # Listando livros novamente
 print("\apos a devoluçao de vitoria:")
 biblioteca.listar_livros()
+
+class Livro:
+    def __init__(self, titulo, autor, ano_publicacao):
+        self.titulo = titulo
+        self.autor = autor
+        self.ano_publicacao = ano_publicacao
+        self.disponivel = True  # Inicia como disponível para empréstimo
+
+    def emprestar(self):
+        """Método para emprestar o livro, se disponível."""
+        if self.disponivel:
+            self.disponivel = False
+            return True
+        return False
+
+    def devolver(self):
+        """Método para devolver o livro e deixá-lo disponível novamente."""
+        self.disponivel = True
+
+
+class Biblioteca:
+    def __init__(self):
+        self.livros = []  # Lista para armazenar os livros na biblioteca
+
+    def adicionar_livro(self, livro):
+        """Adiciona um livro à biblioteca."""
+        self.livros.append(livro)
+        print(f"Livro '{livro.titulo}' adicionado à biblioteca.")
+
+    def listar_livros(self):
+        """Lista todos os livros da biblioteca com seu status."""
+        if not self.livros:
+            print("Não há livros na biblioteca.")
+            return
+        print("Livros disponíveis na biblioteca:")
+        for livro in self.livros:
+            status = "Disponível" if livro.disponivel else "Indisponível"
+            print(f"Livro:")
